@@ -1,7 +1,9 @@
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.lang.Math;
 
 public class EulerProject {
 //    List<Integer> numList = new ArrayList<>();
@@ -54,4 +56,26 @@ public class EulerProject {
         }
         return sum;
     }
+
+    public long Euler_3(long num) {
+        long x = num;
+        while (true) {
+            long y = smFac(x);
+            if (y < x)
+                x /= y;
+            else
+                return x;
+        }
+    }
+
+    private static long smFac(long x) {
+        if (x <= 1)
+            throw new IllegalArgumentException();
+        for (long i = 2, end = (long) Math.sqrt(x); i <= end; i++) {
+            if (x % i == 0)
+                return i;
+        }
+        return x;
+    }
+
 }
